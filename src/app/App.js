@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
-import Header from './Header';
-import Tab from './Tab';
+import PropTypes from 'prop-types';
+import Header from './header/Header';
+import Tab from './tab/Tab';
 
 class App extends Component {
 
     constructor(props) {
         super(props);
-        this.state = {};
+        this.state = {reduxLocalStates:[]};
         this.getSavedState = this.getSavedState.bind(this);
     }
 
@@ -40,7 +41,7 @@ class App extends Component {
                         this.state.storeData !== 'Not_Found' ?
                             <section>
                                 <Tab storeData={this.state.storeData}
-                                    refreshLocalStorageData={this.getSavedState()}
+                                    refreshLocalStorageData={this.getSavedState}
                                     reduxLocalStates={this.state.reduxLocalStates} />
                             </section>
                             :
@@ -54,6 +55,9 @@ class App extends Component {
             </div>
         );
     }
+}
+
+App.propTypes={        
 }
 
 export default App;

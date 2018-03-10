@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import Field from '../util/Field';
+import PropTypes from 'prop-types';
+import Field from '../form/Field';
 
 class SaveSate extends Component {
 
@@ -45,6 +46,12 @@ class SaveSate extends Component {
             </div>
         );
     }
+}
+
+SaveSate.propTypes={
+    storeData:PropTypes.object,
+    refreshLocalStorageData:PropTypes.func,
+    reduxLocalStates:PropTypes.array
 }
 
 export default SaveSate;

@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 class Field extends Component {
 
     constructor(props) {
         super(props);
-        this.state = {};
+        this.state = {value:''};
         this.onChange = this.onChange.bind(this);
     }
 
@@ -23,6 +24,10 @@ class Field extends Component {
             </div>
         );
     }
+}
+
+Field.propTypes={
+    onChange:PropTypes.func
 }
 
 export default Field;

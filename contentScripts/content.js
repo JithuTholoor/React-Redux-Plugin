@@ -7,7 +7,7 @@
                 response.state = getState();
                 break;
             case 'setState':
-                setState(request.state);
+                setState(request.state,request.dispatchAction);
                 restoreState();
         }
         sendResponse(response);
@@ -17,8 +17,9 @@
         return JSON.parse(window.sessionStorage.getItem('redux_store'));
     }
 
-    setState = function (state) {
+    setState = function (state,dispatchAction) {
         window.sessionStorage.setItem('redux_store', JSON.stringify(state));
+        window.sessionStorage.setItem('redux_action', JSON.stringify(dispatchAction));
     }
 })();
 
@@ -37,13 +38,13 @@ function updateStateToSession() {
 function restoreState() {
     var actualCode = '(' +
         function () {
-            debugger;
+            const action=JSON.parse(window.sessionStorage.getItem('redux_action'));
             var state=JSON.parse(window.sessionStorage.getItem('redux_store'));
             var orignalState=window.__reduxStore__.getState();
             for(var key in Object.keys(state)){
                 orignalState[Object.keys(state)[key]]= state[Object.keys(state)[key]];
             }
-            window.__reduxStore__.dispatch({type:'sateRestore'});
+            window.__reduxStore__.dispatch(JSON.parse(action));
         }
         + ')();';
     var script = document.createElement('script');

@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
-import SaveAndReset from './saveAndReset/SaveAndReset';
-import SearchAndUpdate from './searchAndUpdate/SearchAndUpdate';
+import PropTypes from 'prop-types';
+import SaveAndReset from '../saveAndReset/SaveAndReset';
+import SearchAndUpdate from '../searchAndUpdate/SearchAndUpdate';
+
 
 class Tab extends Component {
 
@@ -17,7 +19,7 @@ class Tab extends Component {
     render() {
         let tabs = [
             { title: 'Save & Reset', component: <SaveAndReset {...this.props} /> },
-            { title: 'View & Update', component: <SearchAndUpdate  {...this.props}/> }
+            { title: 'Search & Update', component: <SearchAndUpdate  {...this.props} /> }
         ];
         return (
             <section>
@@ -38,6 +40,12 @@ class Tab extends Component {
             </section>
         );
     }
+}
+
+Tab.propTypes = {
+    storeData: PropTypes.object,
+    refreshLocalStorageData: PropTypes.func,
+    reduxLocalStates: PropTypes.array
 }
 
 export default Tab;

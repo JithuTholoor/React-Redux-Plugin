@@ -1,6 +1,13 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 class Header extends Component {
+
+    constructor(props) {
+        super(props);
+    }
+
+
     render() {
         return (
             <header className="container vr-gutter">
@@ -9,6 +16,9 @@ class Header extends Component {
             </header>
         );
     }
+}
+
+Header.propTypes={        
 }
 
 export default Header;
