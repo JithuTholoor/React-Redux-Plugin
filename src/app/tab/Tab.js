@@ -8,11 +8,12 @@ class Tab extends Component {
 
     constructor(props) {
         super(props);
-        this.state = { tabIndex: 0 };
+        this.state = { tabIndex: localStorage.getItem('selectedTabIndex')||0 };
         this.tabChange = this.tabChange.bind(this);
     }
 
     tabChange(val) {
+        localStorage.setItem('selectedTabIndex',val);
         this.setState({ tabIndex: val });
     }
 
@@ -28,7 +29,7 @@ class Tab extends Component {
                         tabs.map((tab, index) => {
                             return <a
                                 key={index}
-                                className={this.state.tabIndex === index ? "active" : ""}
+                                className={this.state.tabIndex == index ? "active" : ""}
                                 onClick={() => { this.tabChange(index) }}>{tab.title}
                             </a>
                         })

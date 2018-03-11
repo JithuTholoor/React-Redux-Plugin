@@ -21480,7 +21480,7 @@ var Tab = function (_Component) {
 
         var _this = _possibleConstructorReturn(this, (Tab.__proto__ || Object.getPrototypeOf(Tab)).call(this, props));
 
-        _this.state = { tabIndex: 0 };
+        _this.state = { tabIndex: localStorage.getItem('selectedTabIndex') || 0 };
         _this.tabChange = _this.tabChange.bind(_this);
         return _this;
     }
@@ -21488,6 +21488,7 @@ var Tab = function (_Component) {
     _createClass(Tab, [{
         key: 'tabChange',
         value: function tabChange(val) {
+            localStorage.setItem('selectedTabIndex', val);
             this.setState({ tabIndex: val });
         }
     }, {
@@ -21507,7 +21508,7 @@ var Tab = function (_Component) {
                             'a',
                             {
                                 key: index,
-                                className: _this2.state.tabIndex === index ? "active" : "",
+                                className: _this2.state.tabIndex == index ? "active" : "",
                                 onClick: function onClick() {
                                     _this2.tabChange(index);
                                 } },
