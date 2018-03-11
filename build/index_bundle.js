@@ -21815,7 +21815,7 @@ var SavedSates = function (_Component) {
                     _react2.default.createElement(
                         'label',
                         { className: 'text-primary' },
-                        'Saved Sates'
+                        'Saved States'
                     ),
                     _react2.default.createElement(
                         'div',

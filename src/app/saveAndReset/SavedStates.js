@@ -47,7 +47,7 @@ class SavedSates extends Component {
         return (
             <div>
                 <div>
-                    <label className="text-primary">Saved Sates</label>
+                    <label className="text-primary">Saved States</label>
                     <div className="text-right vr-gutter">
                         <a className="helper"
                             onClick={() => { this.setState({ editEnabled: !this.state.editEnabled }) }}
