@@ -13,7 +13,7 @@ class DispatchActionFrom extends Component {
         try{
             const data=JSON.parse(eve.target.innerText);
             this.setState({jsonValidity:true});
-            this.props.updateDispatchAction(data);
+            this.props.updateJSON(data);
         }catch(error){
             if(error.name==="SyntaxError"){
                 this.setState({jsonValidity:false})
@@ -27,15 +27,15 @@ class DispatchActionFrom extends Component {
             <pre contentEditable suppressContentEditableWarning="true"
                 onBlur={this.validateAndUpdate}
                 className={this.state.jsonValidity?"text-area":"text-area error"}>
-                {this.props.dispatchAction}
+                {this.props.dataInJSON}
             </pre>
         );
     }
 }
 
 DispatchActionFrom.propTypes={
-    updateDispatchAction:PropTypes.func,
-    dispatchAction:PropTypes.string
+    updateJSON:PropTypes.func,
+    dataInJSON:PropTypes.string
 }
 
 export default DispatchActionFrom;

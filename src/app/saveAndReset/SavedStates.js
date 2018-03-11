@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import DispatchActionForm from './DispatchActionForm';
+import DispatchActionForm from '../form/JSONForm';
 
 class SavedSates extends Component {
 
-    
+
     constructor(props) {
         super(props);
         this.deleteSavedState = this.deleteSavedState.bind(this);
@@ -55,8 +55,8 @@ class SavedSates extends Component {
                     </div>
                     {this.state.editEnabled &&
                         <DispatchActionForm
-                            dispatchAction={this.state.dispatchAction}
-                            updateDispatchAction={this.setDispatchAction} />
+                            dataInJSON={this.state.dispatchAction}
+                            updateJSON={this.setDispatchAction} />
                     }
                 </div>
                 <ul className="list">
@@ -79,10 +79,10 @@ class SavedSates extends Component {
     }
 }
 
-SavedSates.propTypes={
-    storeData:PropTypes.object,
-    refreshLocalStorageData:PropTypes.func,
-    reduxLocalStates:PropTypes.array
+SavedSates.propTypes = {
+    storeData: PropTypes.object,
+    refreshLocalStorageData: PropTypes.func,
+    reduxLocalStates: PropTypes.array
 }
 
 export default SavedSates;
